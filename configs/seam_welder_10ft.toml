@@ -1,0 +1,25 @@
+[machine]
+model_name = "MITUSA-LSW-3000 (10ft Longitudinal Seam Welder)"
+serial_number = "LSW-2026-0042"
+max_rail_length_mm = 3000.0
+home_offset_mm = 25.0
+default_weld_start_mm = 150.0
+default_weld_end_mm = 2850.0
+
+[serial]
+port_path = "/dev/ttyAMA0"
+baud_rate = 115200
+servo_slave_id = 1
+welder_slave_id = 2
+poll_interval_ms = 20
+watchdog_timeout_ms = 200
+response_timeout_ms = 35
+
+[safety]
+max_travel_speed_mm_min = 2500.0
+max_jog_speed_mm_min = 1800.0
+max_weld_current_amps = 350.0
+over_current_trip_amps = 375.0
+max_arc_voltage_v = 36.0
+min_gas_pre_flow_ms = 600
+clamping_dwell_ms = 500

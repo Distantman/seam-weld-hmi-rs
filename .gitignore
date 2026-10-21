@@ -1,0 +1,13 @@
+# Rust / Cargo build artifacts
+/target
+Cargo.lock
+
+# C++ simulator compiled binary
+/sim/servo_weld_emulator
+
+# OS & Editor files
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/

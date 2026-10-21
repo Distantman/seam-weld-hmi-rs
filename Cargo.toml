@@ -1,0 +1,20 @@
+[package]
+name = "seam-weld-hmi-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Embedded Rust HMI Architect"]
+description = "Safety-critical Raspberry Pi Touchscreen HMI for Automated Longitudinal Seam Welders (RS-485 / Modbus RTU)"
+license = "MIT"
+
+[dependencies]
+eframe = { version = "0.27.2", default-features = true }
+egui = "0.27.2"
+egui_plot = "0.27.2"
+tokio = { version = "1.37", features = ["full"] }
+tokio-serial = { version = "5.4.4", default-features = false }
+crossbeam-channel = "0.5.12"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8.12"
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+crc = "3.2.1"
