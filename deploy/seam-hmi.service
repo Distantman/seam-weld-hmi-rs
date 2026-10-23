@@ -1,0 +1,41 @@
+[Unit]
+Description=MITUSA Longitudinal Seam Welder Touchscreen HMI (Rust / eframe Kiosk)
+Documentation=https://github.com/Distantman/seam-weld-hmi-rs
+After=systemd-udev-settle.service network.target graphical.target
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=simple
+User=operator
+Group=operator
+SupplementaryGroups=dialout gpio video render input
+WorkingDirectory=/opt/mitusa/seam-weld-hmi-rs
+ExecStart=/opt/mitusa/seam-weld-hmi-rs/bin/seam-weld-hmi-rs --config /opt/mitusa/seam-weld-hmi-rs/configs/seam_welder_10ft.toml --serial /dev/ttyWelderRS485
+
+# Real-time scheduling priority for deterministic 50Hz RS-485 Modbus polling & 200ms Watchdog
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=50
+Nice=-10
+IOSchedulingClass=realtime
+IOSchedulingPriority=0
+
+# Wayland / X11 Raspberry Pi 7" DSI Touchscreen Kiosk Environment (Debian Bookworm)
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=RUST_LOG=info
+Environment=RUST_BACKTRACE=1
+
+# Industrial Fault-Tolerant Auto-Restart Policy
+Restart=always
+RestartSec=1
+StartLimitIntervalSec=0
+
+# Hardened Embedded Linux Sandboxing
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/log/mitusa
+
+[Install]
+WantedBy=graphical.target

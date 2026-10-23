@@ -1,0 +1,12 @@
+# /etc/udev/rules.d/99-rs485-welder.rules
+# Deterministic symlink & low-latency FTDI timer configuration for the MITUSA RS-485 bus transceiver.
+# Reload with: sudo udevadm control --reload-rules && sudo udevadm trigger
+
+# 1. Bind industrial USB-to-RS485 FTDI (FT232R / FT231X) adapter to /dev/ttyWelderRS485
+#    and set USB latency timer to 1ms for deterministic 50Hz Modbus RTU polling.
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", \
+    MODE="0660", GROUP="dialout", SYMLINK+="ttyWelderRS485", \
+    RUN+="/bin/sh -c 'echo 1 > /sys/bus/usb-serial/devices/%k/latency_timer'"
+
+# 2. Bind Raspberry Pi 4/5 hardware PL011 UART (/dev/ttyAMA0) with MAX485 RTS direction control
+KERNEL=="ttyAMA0", SUBSYSTEM=="tty", MODE="0660", GROUP="dialout", SYMLINK+="ttyWelderRS485"
