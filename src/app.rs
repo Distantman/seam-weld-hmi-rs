@@ -785,7 +785,7 @@ impl SeamWelderHmiApp {
                             .add(
                                 egui::Slider::new(
                                     &mut self.set_weld_current_amps,
-                                    30.0..=self.config.safety.max_weld_current_amps,
+                                    40.0..=self.config.safety.max_weld_current_amps,
                                 )
                                 .step_by(5.0)
                                 .suffix(" A"),
