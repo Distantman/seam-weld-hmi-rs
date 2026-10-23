@@ -3,7 +3,11 @@
 [![Rust](https://img.shields.io/badge/Language-Rust_2021_Edition-orange?logo=rust)](#)
 [![Target](https://img.shields.io/badge/Target-Raspberry_Pi_4%2F5_(Debian_Bookworm)-C51A4A?logo=raspberrypi)](#)
 [![Protocol](https://img.shields.io/badge/Fieldbus-RS--485_%2F_Modbus_RTU_(115200_8N1)-0066CC)](#)
-[![Safety](https://img.shields.io/badge/Safety-200ms_Hardware_Watchdog_%2B_CRC--16-2EA44F)](#)
+[![Safety](https://img.shields.io/badge/Safety-250ms_Hardware_Watchdog_%2B_CRC--16-2EA44F)](#)
+
+<p align="center">
+  <img src="assets/demo.gif" alt="MITUSA Longitudinal Seam Welder Touchscreen HMI Live Demo" width="100%" />
+</p>
 
 Production-grade **Embedded Linux (Raspberry Pi 4/5) Touchscreen HMI** written in **Rust (`eframe`/`egui` + `tokio`)** for **Automated Longitudinal Seam Welders** (3000 mm linear carriage rail, pneumatic copper backing mandrel clamps, argon shielding gas purge control, and constant-current TIG/MIG welding power source orchestration).
 
