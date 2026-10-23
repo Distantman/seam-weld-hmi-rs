@@ -59,7 +59,7 @@ impl Default for MachineConfig {
                 servo_slave_id: 1,
                 welder_slave_id: 2,
                 poll_interval_ms: 20,
-                watchdog_timeout_ms: 200,
+                watchdog_timeout_ms: 250,
                 response_timeout_ms: 35,
             },
             safety: SafetyLimitsConfig {
